@@ -76,9 +76,13 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL kullanıyoruz
+        'NAME': 'news_api',                         # Oluşturduğunuz veritabanı adı
+        'USER': 'postgres',                         # PostgreSQL kullanıcı adı
+        'PASSWORD': 'emre123',                      # PostgreSQL şifresi
+        'HOST': 'localhost',                        # Veritabanı sunucusu (localhost)
+        'PORT': '5432',                             # PostgreSQL portu (varsayılan 5432)
     }
 }
 
