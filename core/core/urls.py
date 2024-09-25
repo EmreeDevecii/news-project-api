@@ -40,5 +40,5 @@ urlpatterns = [
     path('api_documentation/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
     # Haberler uygulamasının URL'lerini include ediyoruz
-    path('api/', include('haberler.api.urls')),  # 'haberler' uygulamasındaki tüm URL'leri buraya dahil edin
+    path('api/', include('news.api.urls')),  # 'haberler' uygulamasındaki tüm URL'leri buraya dahil edin
 ]

@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "rest_framework",
-    "news.apps.HaberlerConfig",
+    "news.apps.NewsConfig",
     'rest_framework_simplejwt',
-    'rest_framework_swagger',
     "drf_yasg",
 ]
 
@@ -83,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL kullanıyoruz
         'NAME': 'news_api',                         # Oluşturduğunuz veritabanı adı
-        'USER': 'postgres',                         # PostgreSQL kullanıcı adı
-        'PASSWORD': 'emre123',                      # PostgreSQL şifresi
+        'USER': '',                                 # PostgreSQL kullanıcı adı
+        'PASSWORD': '',                             # PostgreSQL şifresi
         'HOST': 'localhost',                        # Veritabanı sunucusu (localhost)
         'PORT': '5432',                             # PostgreSQL portu (varsayılan 5432)
     }
