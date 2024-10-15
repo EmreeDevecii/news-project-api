@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "news.apps.NewsConfig",
     'rest_framework_simplejwt',
-    "drf_yasg",
+    # "drf_yasg",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL kullanıyoruz
         'NAME': 'news_api',                         # Oluşturduğunuz veritabanı adı
-        'USER': '',                                 # PostgreSQL kullanıcı adı
-        'PASSWORD': '',                             # PostgreSQL şifresi
+        'USER': 'postgres',                                 # PostgreSQL kullanıcı adı
+        'PASSWORD': 'emre123',                             # PostgreSQL şifresi
         'HOST': 'localhost',                        # Veritabanı sunucusu (localhost)
         'PORT': '5432',                             # PostgreSQL portu (varsayılan 5432)
     }
@@ -138,6 +139,25 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',  # Varsayılan olarak tüm endpoint'ler için authentication gerekli
     ),
+    'DEFAULT_SCHEMA_CLASS': "drf_spectacular.openapi.AutoSchema", # drf-spectacular ı kullanmak için
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'News API',
+    'DESCRIPTION': 'API Açıklaması',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS': {
+        'persistAuthorization': True,  # Swagger UI'da yetkilendirme bilgilerini saklar
+    },
+    'SECURITY': [
+        {
+            'BearerAuth': {
+                'type': 'http',
+                'scheme': 'bearer',  # Bearer token kullanılıyor
+            }
+        }
+    ],
 }
 
 from datetime import timedelta
