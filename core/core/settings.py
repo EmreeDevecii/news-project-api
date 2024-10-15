@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "news.apps.NewsConfig",
     'rest_framework_simplejwt',
+    'rest_framework_swagger',
     # "drf_yasg",
     "drf_spectacular",
 ]
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    'django.middleware.locale.LocaleMiddleware',    # i18n için   
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -113,13 +115,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGES = [
+    ('en', 'English'),
+    ('tr', 'Türkçe'),
+]
+
+LANGUAGE_CODE = "en"
 
 TIME_ZONE = "UTC"
 
-USE_I18N = True
-
-USE_TZ = True
+USE_I18N = True  # Uluslararasılaştırmayı etkinleştir
+USE_L10N = True  # Yerelleştirme desteğini etkinleştir
+USE_TZ = True    # Zaman dilimi desteğini etkinleştir
 
 
 # Static files (CSS, JavaScript, Images)
@@ -133,6 +140,12 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+    'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',  # JWT Authentication kullanımı
     ),

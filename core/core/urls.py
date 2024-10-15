@@ -9,6 +9,9 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, Spec
 # from drf_yasg.views import get_schema_view
 # from drf_yasg import openapi
 from rest_framework import permissions
+from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
 
 # Swagger ayarları
 # schema_view = get_schema_view(
@@ -45,3 +48,7 @@ urlpatterns = [
     # Haberler uygulamasının URL'lerini include ediyoruz
     path('api/', include('news.api.urls')),  # 'haberler' uygulamasındaki tüm URL'leri buraya dahil edin
 ]
+
+urlpatterns += i18n_patterns(
+    path('api/', include('news.api.urls')),  # API URL'lerini dil ile ilişkilendirme
+)

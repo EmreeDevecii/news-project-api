@@ -5,6 +5,7 @@ from rest_framework.filters import SearchFilter
 from news.models import Makale, Yorum, Favori
 from news.api.serializers import MakaleSerializer, YorumSerializer, FavoriSerializer
 from news.api.permissions import KendiMakalesiYaDaReadOnly
+from rest_framework.renderers import JSONRenderer
 
 # Makale ViewSet
 class MakaleViewSet(
@@ -18,6 +19,7 @@ class MakaleViewSet(
     serializer_class = MakaleSerializer
     permission_classes = [IsAuthenticated, KendiMakalesiYaDaReadOnly]
     filter_backends = [SearchFilter]
+    renderer_classes = [JSONRenderer]
     search_fields = ['baslik']
 
 # Yorum ViewSet
@@ -26,6 +28,7 @@ class YorumViewSet(ModelViewSet):
     queryset = Yorum.objects.all().select_related('yorum_sahibi', 'makale')
     serializer_class = YorumSerializer
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def get_queryset(self):
         # queryset = Yorum.objects.all()
@@ -45,6 +48,7 @@ class FavoriViewSet(ModelViewSet):
     queryset = Favori.objects.all().select_related('favori_sahibi', 'makale')
     serializer_class = FavoriSerializer
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def get_queryset(self):
         # queryset = Favori.objects.all()
