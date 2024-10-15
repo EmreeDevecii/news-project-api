@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # PostgreSQL kullanıyoruz
         'NAME': 'news_api',                         # Oluşturduğunuz veritabanı adı
-        'USER': 'postgres',                                 # PostgreSQL kullanıcı adı
-        'PASSWORD': 'emre123',                             # PostgreSQL şifresi
+        'USER': '',                                 # PostgreSQL kullanıcı adı
+        'PASSWORD': '',                             # PostgreSQL şifresi
         'HOST': 'localhost',                        # Veritabanı sunucusu (localhost)
         'PORT': '5432',                             # PostgreSQL portu (varsayılan 5432)
     }
