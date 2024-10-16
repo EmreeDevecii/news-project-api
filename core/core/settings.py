@@ -51,10 +51,11 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    'django.middleware.locale.LocaleMiddleware',    # i18n için   
+    "django.middleware.locale.LocaleMiddleware",    # i18n için   
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "news.middleware.LogRequestsMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
