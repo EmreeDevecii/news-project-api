@@ -1,6 +1,6 @@
 import logging
 
-logger = logging.getLogger('haberler')
+logger = logging.getLogger('news')
 
 class LogRequestsMiddleware:
     def __init__(self, get_response):

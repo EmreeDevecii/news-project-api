@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     # "drf_yasg",
     "drf_spectacular",
+    "django_crontab",
 ]
 
 MIDDLEWARE = [
@@ -223,3 +224,7 @@ LOGGING = {
         },
     },
 }
+
+CRONJOBS = [
+    ('*/5 * * * *', 'news.cron.my_scheduled_job'), #her 5 dakikada bir
+]
